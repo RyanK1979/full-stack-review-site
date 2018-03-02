@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Xbox game review</title>
+<style>
+body {background-color: AliceBlue;})
+</style>
+
+
+</head>
+
+<body>
+
+	<header>
+		<h1>Xbox game review</h1>
+	</header>		
+	
+	<article>
+	<div th:each="review: ${reviews}">
+		<p th:text="${review.product}"></p>
+		<p th:text="${review.genre}"></p>
+		<img th:src="${review.image}" width="500px" height="300px"/>
+		<p th:text="${review.review}"></p>
+	</div>
+	</article>
+	<footer>	
+		<a href="http://localhost:8080/reviews">Back to home</a>	
+	</footer>
+
+</body>
+</html>

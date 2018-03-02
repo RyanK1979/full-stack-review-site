@@ -1,11 +1,14 @@
 package org.wecancodeit.reviewsitefullstack;
 
+import static java.util.Arrays.asList;
+
 import java.util.Collection;
 import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,6 +22,9 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews;
 
+	@ManyToMany
+	private Collection<Tag> tags;
+
 	public Collection<Review> getReviews() {
 		return reviews;
 	}
@@ -27,10 +33,10 @@ public class Category {
 	private Category() {
 	}
 
-	public Category(String category, Tag...tags) {
+	public Category(String category, Tag... tags) {
 		this.category = category;
-		this.tags = new HashSet<>asList(tags));
-				
+		this.tags = new HashSet<>(asList(tags));
+
 	}
 
 	public Category(String category) {
