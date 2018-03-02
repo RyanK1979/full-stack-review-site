@@ -26,7 +26,7 @@ public class JpaMappingTest {
 	CategoryRepository categoryRepo;
 
 	@Resource
-	RagRepository tagRepo;
+	TagRepository tagRepo;
 
 	@Test
 	public void shouldSaveAndLoadReview() {
@@ -67,7 +67,7 @@ public class JpaMappingTest {
 	}
 
 	@Test
-	public void shouldSaveAndLoadRag() {
+	public void shouldSaveAndLoadTag() {
 		Tag tag = tagRepo.save(new Tag("its name"));
 		long tagId = tag.getId();
 
@@ -76,6 +76,42 @@ public class JpaMappingTest {
 
 		tag = tagRepo.findOne(tagId);
 		assertThat(tag.getName(), is("its name"));
+	}
+
+	@Test
+	public void shouldEstablishCourseToTopicsRelationships() {
+		// topic is not the owner, so we save these first
+		Tag sports = tagRepo.save(new Tag("Sports"));
+		Tag design = tagRepo.save(new Tag("Design"));
+
+		Review review = new Review("", sports, design);
+		review = reviewRepo.save(review);
+		long reviewId = review.getId();
+
+		entityManager.flush();
+		entityManager.clear();
+
+		review = reviewRepo.findOne(reviewId);
+		assertThat(review.getTags(), containsInAnyOrder(sports, design));
+
+	}
+
+	@Test
+	public void shouldEstablishTagToCourseRelationship() {
+		Tag tag = tagRepo.save(new Tag("Sports"));
+		long tagId = tag.getId();
+
+		Review sports = new Review("Sports", tag);
+		sports = reviewRepo.save(sports);
+
+		Review design = new Review("design", tag);
+		design = reviewRepo.save(design);
+
+		entityManager.flush();
+		entityManager.clear();
+
+		tag = tagRepo.findOne(tagId);
+		assertThat(tag.getReviews(), containsInAnyOrder(sports, design));
 	}
 
 }
