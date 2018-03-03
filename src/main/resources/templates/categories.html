@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Ryan's Entertainment Reviews</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<header>
+			<h1>Ryan's Movie, and Television Reviews</h1>
+		</header>		
+		<div class="categories-1">
+			<h1>These are a few of my favorite ways to waste my time, thanks for checking it out!</h1>
+		</div>
+		<h3 class="categories-2">Choose from a Category</h3>
+		<div class="categories-3" th:each="category: ${categories}">
+		<h3><a class="categories-4" th:href="@{/category(id=${category.id})}"th:text="${category.categoryName}"></a></h3>
+		</div>
+	</div>
+
+</body>
+</html>

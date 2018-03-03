@@ -3,16 +3,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>A list of reviews</title>
-<style>
-body {background-color: AliceBlue;})
-</style>
+<title>Show Reviews</title>
 </head>
 
 <body>
+	<div class="container">
 	<header>
-		<h1>A List of Xbox one game reviews</h1>
+		<h1>A list of some of my favorite shows, and Movies</h1>
 	</header>
+	<div class="category-1">
+		<h2>Choose a title</h2>
+	</div>
+	<div class="category-2" th:each="review: ${category.review."
 	
 	<ul th:each="review: ${reviews}">
 		<li>
@@ -20,6 +22,6 @@ body {background-color: AliceBlue;})
 		</li>
 	</ul>
 
-
+	</div>
 </body>
 </html>
