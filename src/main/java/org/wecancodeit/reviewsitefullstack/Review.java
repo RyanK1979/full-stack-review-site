@@ -14,19 +14,12 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Review {
 
-	public Review(String name, Category category) {
-		this.name = name;
-		this.category = category;
-	}
-
-	public Review(String name) {
-		this.name = name;
-	}
-
 	@Id
 	@GeneratedValue
 	private long id;
-	private String name;
+	private String showName;
+	private String imageUrl;
+	private String showReview;
 
 	@ManyToOne
 	private Category category;
@@ -39,7 +32,19 @@ public class Review {
 	}
 
 	public String getName() {
-		return name;
+		return showName;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public String getShowReview() {
+		return showReview;
+	}
+
+	public Category getCategory() {
+		return category;
 	}
 
 	public long getId() {
@@ -52,11 +57,14 @@ public class Review {
 	}
 
 	@SuppressWarnings("unused")
-	private Review() {
+	Review(String name, Tag sports) {
 	}
 
-	public Review(String name, Tag... tags) {
-		this.name = name;
+	public Review(String showReview, String showName, String imageUrl, Category category, Tag... tags) {
+		this.showName = showName;
+		this.showReview = showReview;
+		this.imageUrl = imageUrl;
+		this.category = category;
 		this.tags = new HashSet<>(asList(tags));
 	}
 

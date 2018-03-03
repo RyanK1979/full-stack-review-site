@@ -13,25 +13,25 @@ public class Tag {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String name;
+	private String tag;
 
-	public Tag(String name) {
-		this.name = name;
+	public Tag(String tag) {
+		this.tag = tag;
 	}
 
 	@ManyToMany(mappedBy = "tags")
-	private Collection<Review> reviews;
+	private Collection<Review> reviewList;
 
 	public long getId() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTag() {
+		return tag;
 	}
 
-	public Collection<Review> getReviews() {
-		return reviews;
+	public Collection<Review> getReviewList() {
+		return reviewList;
 	}
 
 	@SuppressWarnings("unused")

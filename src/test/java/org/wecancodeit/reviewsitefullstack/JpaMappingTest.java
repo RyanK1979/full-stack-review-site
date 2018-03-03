@@ -75,7 +75,7 @@ public class JpaMappingTest {
 		entityManager.clear();
 
 		tag = tagRepo.findOne(tagId);
-		assertThat(tag.getName(), is("its name"));
+		assertThat(tag.getTag(), is("its name"));
 	}
 
 	@Test
@@ -84,7 +84,7 @@ public class JpaMappingTest {
 		Tag sports = tagRepo.save(new Tag("Sports"));
 		Tag design = tagRepo.save(new Tag("Design"));
 
-		Review review = new Review("", sports, design);
+		Review review = new Review("", null, null, null, null);
 		review = reviewRepo.save(review);
 		long reviewId = review.getId();
 
@@ -101,17 +101,17 @@ public class JpaMappingTest {
 		Tag tag = tagRepo.save(new Tag("Sports"));
 		long tagId = tag.getId();
 
-		Review sports = new Review("Sports", tag);
+		Review sports = new Review("review", tag);
 		sports = reviewRepo.save(sports);
 
-		Review design = new Review("design", tag);
+		Review design = new Review("review", tag);
 		design = reviewRepo.save(design);
 
 		entityManager.flush();
 		entityManager.clear();
 
 		tag = tagRepo.findOne(tagId);
-		assertThat(tag.getReviews(), containsInAnyOrder(sports, design));
+		assertThat(tag.getReviewList(), containsInAnyOrder(sports, design));
 	}
 
 }
