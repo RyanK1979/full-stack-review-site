@@ -3,6 +3,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport"
+		content="width=device-width, intial-scale=1"></meta>
 	<link rel="stylesheet" href="./css/layout.css"></link>
 	<link rel="stylesheet" href="./css/style.css"></link>
 <title>Ryan's Entertainment Reviews</title>
@@ -14,23 +17,17 @@
 		<header class="header">
 			<h1>Ryan's Movie, and Television Reviews</h1>
 		</header>		
-		<div>
-			<h1>These are a few of my favorite ways to waste my time, thanks for checking it out!</h1>
-		</div>
-		<div id="categories-content">
-		<h3>Choose from a Category</h3>
+		<div id="body">
+		<h2>Choose from a Category</h2>
 		<h2 id="categories-list" th:each= "category : ${categories}">
 			<a th:href= "@{category(id=${category.id})}" th:text= "${category.categoryName}"></a>	
 		</h2>
 		</div>
 		
 			<footer class="footer">
-			<div class="backBtn">
-		 	<h2 id="back"><a href="/index">Back to Home</a></h2></div>
-			<p>&copy; 2018</p>
+		 	<h2 id="back"><a href="/index">Back to Home</a></h2>
 			</footer>
 		
 	</div>
-
 </body>
 </html>

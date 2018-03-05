@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport"
+		content="width=device-width, intial-scale=1"></meta>
 	<link rel="stylesheet" href="./css/layout.css"></link>
 	<link rel="stylesheet" href="./css/style.css"></link>
 <title>Ryan's Entertainment Reviews</title>
@@ -21,17 +24,18 @@
 		
 	
 		<div id="reviews-content">
+		<section>
 			<div th:each="review: ${reviews}">
 				<h2 id="reviews-list">
 					<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
 				</h2>	
 			</div>
+		</section>	
 		</div>
+		
 		<footer class="footer">
-			<div class="backBtn">
-		 	<h2 id="back"><a href="/index">Back to Home</a></h2></div>
-			<p>&copy; 2018</p>
+		 	<h2><a href="/index">Back to Home</a></h2>
 			</footer>
-	</div>
+			</div>
 </body>
 </html>
