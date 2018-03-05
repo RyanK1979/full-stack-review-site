@@ -8,6 +8,7 @@ import java.util.HashSet;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -17,9 +18,10 @@ public class Review {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String showName;
-	private String imageUrl;
-	private String showReview;
+	private String name;
+	private String image;
+	@Lob
+	private String content;
 
 	@ManyToOne
 	private Category category;
@@ -27,20 +29,33 @@ public class Review {
 	@ManyToMany
 	private Collection<Tag> tags;
 
-	public Collection<Tag> getTags() {
-		return tags;
+	public Review(String content, String name, String image, Category category, Tag... tags) {
+		this.name = name;
+		this.content = content;
+		this.image = image;
+		this.category = category;
+		this.tags = new HashSet<>(asList(tags));
+	}
+
+	public Review(long id, Category category) {
+		this.id = id;
+		this.category = category;
 	}
 
 	public String getName() {
-		return showName;
+		return name;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
+	public String getImage() {
+		return image;
 	}
 
-	public String getShowReview() {
-		return showReview;
+	public String getContent() {
+		return content;
+	}
+
+	public Collection<Tag> getTags() {
+		return tags;
 	}
 
 	public Category getCategory() {
@@ -57,15 +72,7 @@ public class Review {
 	}
 
 	@SuppressWarnings("unused")
-	Review(String name, Tag sports) {
-	}
-
-	public Review(String showReview, String showName, String imageUrl, Category category, Tag... tags) {
-		this.showName = showName;
-		this.showReview = showReview;
-		this.imageUrl = imageUrl;
-		this.category = category;
-		this.tags = new HashSet<>(asList(tags));
+	private Review() {
 	}
 
 	@Override

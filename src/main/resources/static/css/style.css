@@ -1,0 +1,10 @@
+body{
+	background: radial-gradient(white, lightgray, gray);
+}
+
+.categories{
+	border: 5px solid black;
+	list-style-type: none;
+	font-size: 80px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}

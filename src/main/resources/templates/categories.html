@@ -3,22 +3,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+	<link rel="stylesheet" href="./css/layout.css"></link>
+	<link rel="stylesheet" href="./css/style.css"></link>
 <title>Ryan's Entertainment Reviews</title>
 </head>
 
 <body>
 
 	<div class="container">
-		<header>
+		<header class="header">
 			<h1>Ryan's Movie, and Television Reviews</h1>
 		</header>		
-		<div class="categories-1">
+		<div>
 			<h1>These are a few of my favorite ways to waste my time, thanks for checking it out!</h1>
 		</div>
-		<h3 class="categories-2">Choose from a Category</h3>
-		<div class="categories-3" th:each="category: ${categories}">
-		<h3><a class="categories-4" th:href="@{/category(id=${category.id})}"th:text="${category.categoryName}"></a></h3>
+		<div id="categories-content">
+		<h3>Choose from a Category</h3>
+		<h2 id="categories-list" th:each= "category : ${categories}">
+			<a th:href= "@{category(id=${category.id})}" th:text= "${category.categoryName}"></a>	
+		</h2>
 		</div>
+		
+			<footer class="footer">
+			<div class="backBtn">
+		 	<h2 id="back"><a href="/index">Back to Home</a></h2></div>
+			<p>&copy; 2018</p>
+			</footer>
+		
 	</div>
 
 </body>

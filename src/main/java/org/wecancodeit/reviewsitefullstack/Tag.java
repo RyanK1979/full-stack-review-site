@@ -13,29 +13,38 @@ public class Tag {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String tag;
-
-	public Tag(String tag) {
-		this.tag = tag;
-	}
+	private String tagDescription;
 
 	@ManyToMany(mappedBy = "tags")
-	private Collection<Review> reviewList;
+	private Collection<Review> reviews;
+
+	public Tag(String tagDescription) {
+		this.tagDescription = tagDescription;
+	}
+
+	Tag(long id) {
+		this.id = id;
+	}
 
 	public long getId() {
 		return id;
 	}
 
 	public String getTag() {
-		return tag;
+		return tagDescription;
 	}
 
-	public Collection<Review> getReviewList() {
-		return reviewList;
+	public Collection<Review> getReview() {
+		return reviews;
 	}
 
 	@SuppressWarnings("unused")
 	private Tag() {
+	}
+
+	@Override
+	public int hashCode() {
+		return ((Long) id).hashCode();
 	}
 
 	@Override

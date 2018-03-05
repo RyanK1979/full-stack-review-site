@@ -3,31 +3,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Xbox game review</title>
-<style>
-body {})
-</style>
-
-
+		<link rel="stylesheet" href="./css/layout.css"></link>
+		<link rel="stylesheet" href="./css/style.css"></link>
+	<title>Ryan's Entertainment Reviews</title>
 </head>
-
 <body>
+	<div class="container">
+	<header class="header">
+		<h1>Ryan's review of </h1> 
+	</header>
+		<div id="review-content">
+		<h2 class="title" th:text="${review.name}"></h2> 
+		<p th:text="${review.content}"></p>
+		<img class="photo" th:src="${review.image}" width="500px" height="300px"/>
+		</div>
 
-	<header>
-		<h1>Xbox game review</h1>
-	</header>		
-	
-	<article>
-	<div th:each="review: ${reviews}">
-		<p th:text="${review.product}"></p>
-		<p th:text="${review.genre}"></p>
-		<img th:src="${review.image}" width="500px" height="300px"/>
-		<p th:text="${review.review}"></p>
-	</div>
-	</article>
-	<footer>	
-		<a href="http://localhost:8080/reviews">Back to home</a>	
+	<footer class="footer">	
+	<div class="backBtn">
+		<h2 id="back"><a href="http://localhost:8080/reviews">Back to Reviews</a></h2>
+	</div>	
+		<p>&copy; 2018</p>
 	</footer>
-
+</div>
 </body>
 </html>

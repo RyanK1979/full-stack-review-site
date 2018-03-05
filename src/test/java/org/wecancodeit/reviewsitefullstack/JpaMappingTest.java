@@ -75,7 +75,7 @@ public class JpaMappingTest {
 		entityManager.clear();
 
 		tag = tagRepo.findOne(tagId);
-		assertThat(tag.getTag(), is("its name"));
+		assertThat(tag.getName(), is("its name"));
 	}
 
 	@Test

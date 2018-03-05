@@ -3,25 +3,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+	<link rel="stylesheet" href="./css/layout.css"></link>
+	<link rel="stylesheet" href="./css/style.css"></link>
 <title>Show Reviews</title>
 </head>
 
 <body>
 	<div class="container">
-	<header>
+	<header class="header">
 		<h1>A list of some of my favorite shows, and Movies</h1>
 	</header>
 	<div class="category-1">
 		<h2>Choose a title</h2>
 	</div>
-	<div class="category-2" th:each="review: ${category.review."
-	
-	<ul th:each="review: ${reviews}">
-		<li>
-			<a th:href="@{/review(id=${review.id})}" th:text="${review.product}"></a>
-		</li>
-	</ul>
-
+	<div class="category-2" th:each="review: ${category.categoryName}">
+		<ul  th:each= "review : ${reviews}">
+			<li><a th:href= "@{review(id=${review.id})}"
+				th:text= "${review.name}"></a></li>	
+			
+				
+		</ul>
+		
+	</div>
+	<footer class="footer">
+	<div class="backBtn">
+		<h2 id="back"><a href="http://localhost:8080/categories">Back to Categories</a></h2>
+	</div>
+		<p>&copy; 2018</p>
+	</footer>
 	</div>
 </body>
 </html>
